@@ -54,8 +54,5 @@ class Controller(object):
                 print('experience: {} years'.format(member.experience))
 
     def sort_by_faculty(self, database):
-        return sorted(database)
-
-
-
-
+        sorted_database = sorted(database, key=lambda member: member.faculty)
+        return sorted_database
