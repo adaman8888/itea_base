@@ -24,35 +24,39 @@ class Lecturer(UniversityMember):
 
 class Controller(object):
     """Class that controls university members database"""
+    # Function takes file as argument and reads it. Then splits each line by spaces and '=',
+    # creates student or lecturer object for each line with values from this line,
+    # and returns list of objects
     def create_database_from_file(self, database_file):
         with open(database_file) as file:
-            members = []  # list for members of university
-            for line in file:  # read each line
-                member = []  # list for each member
-                member_list = line.split()  # split each line by space and add to temporary list
-                for element in member_list:
-                    member.append(element.split('=')[1])  # split each element of temporary list by '=' and add second part to member list
-                members.append(member)  # add member list to list of members
-        database = []
-        for member in members:
-            if member[0] == 'Student':
-                student = Student(member[1], member[2], member[3], member[4], member[5], member[6])
-                database.append(student)
-            elif member[0] == 'Lecturer':
-                lecturer = Lecturer(member[1], member[2], member[3], member[4], member[5], member[6])
-                database.append(lecturer)
+            database = []  # create list for members of university
+            for line in file:  # read each line of file
+                member = []  # create list for each member properties (name, faculty etc)
+                temp_list = line.split()  # split each line by space and add to temporary list
+                for element in temp_list:                  # split each element of temporary list by '='
+                    member.append(element.split('=')[1])   # and add second part to member list
+                if member[0] == 'Student':  # if member is student, create student object
+                    student = Student(member[1], member[2], member[3], member[4], member[5], member[6])
+                    database.append(student)    # add created student object to final list
+                elif member[0] == 'Lecturer': # if member is lecturer, create lecturer object
+                    lecturer = Lecturer(member[1], member[2], member[3], member[4], member[5], member[6])
+                    database.append(lecturer) # add created lecturer object to final list
         return database
 
+    # Function takes list of objects as argument and prints all properties of each object
     def print_database(self, database):
-        for member in database:
+        for member in database: # for each member object in database list print common properties
             print('{}: {} {}, birth year: {}, salary: {} UAH, faculty: {}, '
                   .format(member.__class__.__name__, member.first_name, member.last_name,
                           member.birth_year, member.salary, member.faculty), end='')
-            if member.__class__.__name__ == 'Student':
+            if member.__class__.__name__ == 'Student':      # for students print course
                 print('course: {}'.format(member.course))
-            elif member.__class__.__name__ == 'Lecturer':
+            elif member.__class__.__name__ == 'Lecturer':   # for lecturers print experience
                 print('experience: {} years'.format(member.experience))
 
+    # Function takes ist of objects as argument and sorts it by value of property 'faculty'
     def sort_by_faculty(self, database):
+        # Create new list. For each member of database take value of 'faculty' and sort
+        # database by this value
         sorted_database = sorted(database, key=lambda member: member.faculty)
         return sorted_database
