@@ -11,7 +11,7 @@ position=Student first_name=Samwell last_name=Tarly birth_year=1988 salary=2000 
 position=Lecturer first_name=Eddard last_name=Stark birth_year=1959 salary=5000 faculty=History experience=25
 position=Lecturer first_name=Robert last_name=Baratheon birth_year=1964 salary=4500 faculty=Biology experience=15
 position=Lecturer first_name=Jaime last_name=Lannister birth_year=1970 salary=5000 faculty=Medicine experience=20
-position=Lecturer first_name=Catelyn last_name=Stark birth_year=‭1962‬ salary=5200 faculty=Mathematics experience=23
+position=Lecturer first_name=Catelyn last_name=Stark birth_year=1962 salary=5200 faculty=Mathematics experience=23
 position=Lecturer first_name=Cersei last_name=Lannister birth_year=1973 salary=5500 faculty=Chemistry experience=19
 position=Lecturer first_name=Jorah last_name=Mormont birth_year=1961 salary=4000 faculty=Physics experience=27
 position=Lecturer first_name=Tyrion last_name=Lannister birth_year=1969 salary=5200 faculty=Ecology experience=21
